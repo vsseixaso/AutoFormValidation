@@ -1,30 +1,17 @@
-const mysql      = require('mysql');
-const connection = mysql.createConnection({
-    host     : 'localhost',
-    database : 'tcc',
-    user     : 'root',
-    password : 'Cr0w$p1ke',
-});
+const util = require( 'util' );
+const mysql = require( 'mysql' );
 
-const openConnection = () => {
-    connection.connect(function(err) {
-        if (err) {
-            console.error('Error connecting: ' + err.stack);
-            return;
-        }
-    
-        console.log('Connected as id ' + connection.threadId);
-    });
-};
+function makeDb( config ) {
+  const connection = mysql.createConnection( config );
+  return {
+    query( sql, args ) {
+      return util.promisify( connection.query )
+        .call( connection, sql, args );
+    },
+    close() {
+      return util.promisify( connection.end ).call( connection );
+    }
+  };
+}
 
-const getConnection = () => {
-    return connection;
-};
-
-const closeConnection = () => {
-    connection.end();
-};
-
-exports.openConnection = openConnection;
-exports.getConnection = getConnection;
-exports.closeConnection = closeConnection;
+module.exports = {makeDb};
