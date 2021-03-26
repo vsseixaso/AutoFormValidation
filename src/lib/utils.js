@@ -10,7 +10,7 @@ const generateQuery = (schemaName, tableName) => {
 };
 
 const getType = type => {
-    return Object.keys(DataType).find(key => DataType[key].includes(type))
+    return Object.keys(DataType).find(key => DataType[key].includes(type));
 };
 
 module.exports = { generateQuery, getType };
