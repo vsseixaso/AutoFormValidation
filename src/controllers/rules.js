@@ -1,21 +1,6 @@
-const config = require('./db-config');
-const { makeDb } = require('./db');
-const utils = require('./utils');
-
-const getTableMetadata = async (schemaName, tableName) => {
-    const db = makeDb(config);
-
-    try {
-        const query = utils.generateQuery(schemaName, tableName);
-        const tableMetadata = await db.query(query);
-
-        return tableMetadata;
-    } catch ( err ) {
-        console.error(err);
-    } finally {
-        await db.close();
-    }
-};
+const { makeDb } = require('../db');
+const dbConfig = require('../config/db');
+const utils = require('../lib/utils');
 
 const formatTableMetadata = tableMetadata => {
 
@@ -76,11 +61,30 @@ const formatTableMetadata = tableMetadata => {
 
     return rules;
 };
+
+const getTableMetadata = async (schemaName, tableName) => {
+    const db = makeDb(dbConfig);
+
+    try {
+        const query = utils.generateQuery(schemaName, tableName);
+        const tableMetadata = await db.query(query);
+
+        return tableMetadata;
+    } catch ( err ) {
+        console.error(err);
+    } finally {
+        await db.close();
+    }
+};
     
-const main = async () => {
-    const tableMetadata = await getTableMetadata('tcc', 'persons');
+const getRules = async tableName => {
+    const schemaName = dbConfig.database;
+    const tableMetadata = await getTableMetadata(schemaName, tableName);
     const rules = formatTableMetadata(tableMetadata);
+    
     console.log(rules);
+    
+    return rules;
 };
 
-main();
+module.exports = { getRules };
