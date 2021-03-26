@@ -3,6 +3,6 @@ const DataType = {
     STRING: 'String',
     BOOL: 'Boolean',
     NULL: 'Null'
-}
+};
 
 module.exports = { DataType };

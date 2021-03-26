@@ -82,8 +82,6 @@ const getRules = async tableName => {
     const tableMetadata = await getTableMetadata(schemaName, tableName);
     const rules = formatTableMetadata(tableMetadata);
     
-    console.log(rules);
-    
     return rules;
 };
 

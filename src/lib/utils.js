@@ -1,4 +1,4 @@
-const { DataType } = require('./constants')
+const { DataType } = require('./constants');
 
 const generateQuery = (schemaName, tableName) => {
     return `SELECT table_schema, table_name, column_name,
@@ -10,7 +10,7 @@ const generateQuery = (schemaName, tableName) => {
 };
 
 const contains = (arr, item) => {
-    return arr.includes(item)
+    return arr.includes(item);
 };
 
 const getType = item => {
