@@ -1,4 +1,4 @@
-const { Type } = require('./constants')
+const { DataType } = require('./constants')
 
 const generateQuery = (schemaName, tableName) => {
     return `SELECT table_schema, table_name, column_name,
@@ -14,10 +14,19 @@ const contains = (arr, item) => {
 };
 
 const getType = item => {
-    if (contains(['int', 'decimal'], item)) return Type.NUMBER
-    if (contains(['char', 'varchar'], item)) return Type.STRING
-    if (contains(['tinyint'], item)) return Type.BOOL
-    else return Type.NULL
+    let dataType = '';
+
+    if (contains(['int', 'decimal'], item)) {
+        dataType = DataType.NUMBER;
+    } else if (contains(['char', 'varchar'], item)) {
+        dataType = DataType.STRING;
+    } else if (contains(['tinyint'], item)) {
+        dataType = DataType.BOOL;
+    } else {
+        dataType = DataType.NULL;
+    }
+
+    return dataType;
 };
 
 module.exports = { generateQuery, getType };
