@@ -1,8 +1,7 @@
 const DataType = {
-    NUMBER: 'Number',
-    STRING: 'String',
-    BOOL: 'Boolean',
-    NULL: 'Null'
+    NUMBER: ['int', 'decimal'],
+    STRING: ['char', 'varchar'],
+    BOOL: ['tinyint']
 };
 
 module.exports = { DataType };

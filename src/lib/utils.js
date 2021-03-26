@@ -9,24 +9,8 @@ const generateQuery = (schemaName, tableName) => {
         WHERE (table_schema='${schemaName}' and table_name = '${tableName}')`;
 };
 
-const contains = (arr, item) => {
-    return arr.includes(item);
-};
-
-const getType = item => {
-    let dataType = '';
-
-    if (contains(['int', 'decimal'], item)) {
-        dataType = DataType.NUMBER;
-    } else if (contains(['char', 'varchar'], item)) {
-        dataType = DataType.STRING;
-    } else if (contains(['tinyint'], item)) {
-        dataType = DataType.BOOL;
-    } else {
-        dataType = DataType.NULL;
-    }
-
-    return dataType;
+const getType = type => {
+    return Object.keys(DataType).find(key => DataType[key].includes(type))
 };
 
 module.exports = { generateQuery, getType };
