@@ -14,4 +14,4 @@ function makeDb( config ) {
   };
 }
 
-module.exports = {makeDb};
+module.exports = { makeDb };
