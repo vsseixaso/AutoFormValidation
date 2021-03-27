@@ -1,6 +1,8 @@
 const { makeDb } = require('../db');
 const dbConfig = require('../config/db');
+const { metadataColumns } = require('../lib/constants');
 const utils = require('../lib/utils');
+
 
 const formatTableMetadata = tableMetadata => {
 
@@ -41,18 +43,14 @@ const formatTableMetadata = tableMetadata => {
                     return column[metadata];
             }
         };
-    
-        return {
-            defaultValue: convert('COLUMN_DEFAULT'),
-            mandatory: convert('IS_NULLABLE'),
-            type: convert('DATA_TYPE'),
-            maxLength: convert('CHARACTER_MAXIMUM_LENGTH'),
-            precision: convert('NUMERIC_PRECISION'),
-            scale: convert('NUMERIC_SCALE'),
-            datetime: convert('DATETIME_PRECISION'),
-            columnType: convert('COLUMN_TYPE'),
-            descrition: convert('COLUMN_COMMENT'),
-        };
+
+        let obj = {}
+
+        Object.keys(metadataColumns).forEach(key => {
+            obj[key] = convert(metadataColumns[key]);
+        });
+
+        return obj;
     };
     
     tableMetadata.forEach(column => {
