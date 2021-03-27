@@ -1,5 +1,3 @@
-const { dataType } = require('./constants');
-
 const generateQuery = (schemaName, tableName) => {
     return `SELECT table_schema, table_name, column_name,
             ordinal_position, column_default, is_nullable, 
@@ -9,8 +7,8 @@ const generateQuery = (schemaName, tableName) => {
         WHERE (table_schema='${schemaName}' and table_name = '${tableName}')`;
 };
 
-const getType = type => {
-    return Object.keys(dataType).find(key => dataType[key].includes(type));
+const getType = (dbType, types) => {
+    return Object.keys(types).find(key => types[key].includes(dbType));
 };
 
 module.exports = { generateQuery, getType };

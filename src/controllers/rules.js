@@ -3,58 +3,25 @@ const dbConfig = require('../config/db');
 const { metadataColumns } = require('../lib/constants');
 const utils = require('../lib/utils');
 
+const getColumnRules = column => {
+    let columnRules = {};
+
+    Object.keys(metadataColumns).forEach(key => {
+        const metadata = metadataColumns[key];
+        const convert = metadata.convert;
+        const columnName = column[metadata.name];
+
+        columnRules[key] = convert(columnName);
+    });
+
+    return columnRules;
+};
 
 const formatTableMetadata = tableMetadata => {
-
     let rules = {};
-
-    const getValues = column => {
-
-        const convert = metadata => {
-            switch (metadata) {
-                case 'COLUMN_DEFAULT':
-                    return column[metadata];
-                
-                case 'IS_NULLABLE':
-                    return column[metadata] == 'YES' ? false : true;
-                
-                case 'DATA_TYPE':
-                    return utils.getType(column[metadata]);
-
-                case 'CHARACTER_MAXIMUM_LENGTH':
-                    return column[metadata];
-                
-                case 'NUMERIC_PRECISION':
-                    return column[metadata];
-                
-                case 'NUMERIC_SCALE':
-                    return column[metadata];
-
-                case 'DATETIME_PRECISION':
-                    return column[metadata];
-    
-                case 'COLUMN_TYPE':
-                    return column[metadata];
-        
-                case 'COLUMN_COMMENT':
-                    return column[metadata];
-                   
-                default:
-                    return column[metadata];
-            }
-        };
-
-        let obj = {}
-
-        Object.keys(metadataColumns).forEach(key => {
-            obj[key] = convert(metadataColumns[key]);
-        });
-
-        return obj;
-    };
     
     tableMetadata.forEach(column => {
-        rules[column['COLUMN_NAME']] = getValues(column);
+        rules[column['COLUMN_NAME']] = getColumnRules(column);
     });
 
     return rules;
