@@ -9,7 +9,7 @@ export const EmployeeList = () => {
     <React.Fragment>
       {employees.length > 0 ? (
         <React.Fragment>
-          {employees.map((employee) => (
+          {employees.map(employee => (
             <div
               className="flex items-center bg-gray-100 mb-10 shadow"
               key={employee.id}

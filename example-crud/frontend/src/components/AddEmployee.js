@@ -16,7 +16,7 @@ export const AddEmployee = () => {
     location: "",
   });
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     addEmployee(newEmployee);
     history.push("/");

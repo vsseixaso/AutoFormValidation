@@ -25,7 +25,7 @@ export default function appReducer(state, action) {
 			return {
 				...state,
 				employees: state.employees.filter(
-					(employee) => employee.id !== action.payload
+					employee => employee.id !== action.payload
 				),
 			};
 

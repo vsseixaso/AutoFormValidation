@@ -1,6 +1,7 @@
 import React from "react";
-import { Heading } from "./Heading";
+
 import { EmployeeList } from "./EmployeeList";
+import { Heading } from "./Heading";
 
 export const Home = () => {
   return (

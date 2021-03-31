@@ -1,10 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
 
-import { GlobalProvider } from './context/GlobalState';
-
-import { Home } from './components/Home';
 import { AddEmployee } from './components/AddEmployee';
 import { EditEmployee } from './components/EditEmployee';
+import { Home } from './components/Home';
+import { GlobalProvider } from './context/GlobalState';
 
 function App() {
   return (

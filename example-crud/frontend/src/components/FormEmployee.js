@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-export const FormEmployee = (props) => {
+export const FormEmployee = props => {
 	const { employee, handleOnChange, onSubmit } = props;
   
 	return (
@@ -18,7 +18,7 @@ export const FormEmployee = (props) => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
               value={employee.name}
-              onChange={(e) => handleOnChange("name", e.target.value)}
+              onChange={e => handleOnChange("name", e.target.value)}
               type="text"
               placeholder="Enter name"
             />
@@ -33,7 +33,7 @@ export const FormEmployee = (props) => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
               value={employee.location}
-              onChange={(e) => handleOnChange("location", e.target.value)}
+              onChange={e => handleOnChange("location", e.target.value)}
               type="text"
               placeholder="Enter location"
             />
@@ -48,7 +48,7 @@ export const FormEmployee = (props) => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
               value={employee.designation}
-              onChange={(e) => handleOnChange("designation", e.target.value)}
+              onChange={e => handleOnChange("designation", e.target.value)}
               type="text"
               placeholder="Enter designation"
             />
