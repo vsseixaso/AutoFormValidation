@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 
 export const EmployeeList = () => {
   const { employees, removeEmployee } = useContext(GlobalContext);

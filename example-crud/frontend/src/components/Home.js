@@ -1,6 +1,6 @@
 import React from "react";
 
-import { EmployeeList } from "./EmployeeList";
+import { EmployeeList } from "./employee/List";
 import { Heading } from "./Heading";
 
 export const Home = () => {

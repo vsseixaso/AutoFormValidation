@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { GlobalContext } from '../context/GlobalState';
-import { FormEmployee } from './FormEmployee';
+import { GlobalContext } from '../../context/GlobalState';
+import { FormEmployee } from './Form';
 
 export const EditEmployee = route => {
   let history = useHistory();
