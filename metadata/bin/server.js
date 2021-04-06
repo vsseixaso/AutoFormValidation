@@ -8,7 +8,7 @@ const normalizePort = val => {
     else return false;
 };
 
-const port = normalizePort(process.env.PORT || '8001');
+const port = normalizePort(process.env.PORT || '8000');
 
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);

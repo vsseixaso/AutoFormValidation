@@ -7,8 +7,11 @@ const initialState = {
     {
       id: 1,
       name: "Vinícius Seixas",
-      location: "Campina Grande - PB",
-      designation: "Developer"
+      birthday: "1998-06-17",
+      gender: "M",
+      height: 181,
+      weight: 69.5,
+      has_children: false
     }
   ]
 };

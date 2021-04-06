@@ -12,8 +12,11 @@ export const AddEmployee = () => {
   const [newEmployee, setNewEmployee] = useState({
     id: employees.length + 1,
     name: "",
-    designation: "",
-    location: "",
+    birthday: "",
+    gender: "",
+    height: "",
+    weight: "",
+    has_children: false,
   });
 
   const onSubmit = e => {

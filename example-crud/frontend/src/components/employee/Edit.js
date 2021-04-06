@@ -12,8 +12,11 @@ export const EditEmployee = route => {
   const [selectedEmployee, setSelectedEmployee] = useState({
     id: null,
     name: "",
-    designation: "",
-    location: "",
+    birthday: "",
+    gender: "",
+    height: "",
+    weight: "",
+    has_children: false,
   });
 
   const currentEmployeeId = route.match.params.id;

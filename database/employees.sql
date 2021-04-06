@@ -1,7 +1,7 @@
 CREATE TABLE `employees` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
-  `birth` date NOT NULL,
+  `birthday` date NOT NULL,
   `gender` char(1) NOT NULL,
   `height` int DEFAULT NULL,
   `weight` decimal(5,2) DEFAULT NULL,

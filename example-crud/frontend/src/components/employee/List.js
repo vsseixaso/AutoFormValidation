@@ -1,10 +1,21 @@
+import moment from 'moment';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import Gender from '../../constants/gender';
 import { GlobalContext } from '../../context/GlobalState';
 
 export const EmployeeList = () => {
   const { employees, removeEmployee } = useContext(GlobalContext);
+
+  const formatHeightWeight = (height, weight) => {
+    const formatedHeight = height ? `${height} cm` : '';
+    const formatedWeight = weight ? `${weight} kg` : '';
+    const pipe = height && weight ? ' | ' : '';
+
+    return formatedHeight + pipe + formatedWeight;
+  };
+
   return (
     <React.Fragment>
       {employees.length > 0 ? (
@@ -15,15 +26,24 @@ export const EmployeeList = () => {
               key={employee.id}
             >
               <div className="flex-auto text-left px-4 py-2 m-2">
-                <p className="text-gray-900 leading-none">
+                <span className="inline-block text-base font-semibold mt-1">
                   {employee.name}
-                </p>
-                <p className="text-gray-600">
-                  {employee.designation}
-                </p>
-                <span className="inline-block text-sm font-semibold mt-1">
-                  {employee.location}
                 </span>
+                <p className="text-xs text-gray-600">
+                  {employee.birthday 
+                    ? moment(employee.birthday, 'YYYY-MM-DD').format('DD/MM/YYYY')
+                    : ''
+                  }
+                </p>
+                <p className="text-xs text-gray-600">
+                  {Gender[employee.gender]}
+                </p>
+                <p className="text-xs text-gray-600">
+                  {formatHeightWeight(employee.height, employee.weight)}
+                </p>
+                <p className="text-xs text-gray-600">
+                  {employee.has_children ? 'Has children' : ''}
+                </p>
               </div>
               <div className="flex-auto text-right px-4 py-2 m-2">
                 <Link
