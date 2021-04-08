@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import { GlobalContext } from '../../context/GlobalState';
-import { FormEmployee } from './Form';
+import { GlobalContext } from "../../context/GlobalState";
+import { FormEmployee } from "./Form";
 
 export const AddEmployee = () => {
   let history = useHistory();
@@ -19,14 +19,15 @@ export const AddEmployee = () => {
     has_children: false,
   });
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     addEmployee(newEmployee);
     history.push("/");
   };
 
-  const handleOnChange = (employeeKey, newValue) =>
-    setNewEmployee({ ...newEmployee, [employeeKey]: newValue });
+  const handleOnChange = (employeeKey, newValue) => {
+    return setNewEmployee({ ...newEmployee, [employeeKey]: newValue });
+  };
 
   return (
     <FormEmployee

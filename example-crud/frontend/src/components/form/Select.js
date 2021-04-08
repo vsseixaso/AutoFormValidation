@@ -1,1 +1,1 @@
-export default Select = () => {};
+export const Select = () => {};

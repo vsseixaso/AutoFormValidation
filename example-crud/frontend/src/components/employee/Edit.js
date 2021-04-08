@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import { GlobalContext } from '../../context/GlobalState';
-import { FormEmployee } from './Form';
+import { GlobalContext } from "../../context/GlobalState";
+import { FormEmployee } from "./Form";
 
-export const EditEmployee = route => {
+export const EditEmployee = (route) => {
   let history = useHistory();
 
   const { employees, editEmployee } = useContext(GlobalContext);
@@ -24,12 +24,12 @@ export const EditEmployee = route => {
   useEffect(() => {
     const employeeId = currentEmployeeId;
     const selectedEmployee = employees.find(
-      currentEmployee => currentEmployee.id === parseInt(employeeId)
+      (currentEmployee) => currentEmployee.id === parseInt(employeeId)
     );
     setSelectedEmployee(selectedEmployee);
   }, [currentEmployeeId, employees]);
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     editEmployee(selectedEmployee);
     history.push("/");
