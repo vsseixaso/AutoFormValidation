@@ -1,6 +1,6 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from "react";
 
-import appReducer from './AppReducer';
+import appReducer from "./AppReducer";
 
 const initialState = {
   employees: [
@@ -11,9 +11,9 @@ const initialState = {
       gender: "M",
       height: 181,
       weight: 69.5,
-      has_children: false
-    }
-  ]
+      has_children: false,
+    },
+  ],
 };
 
 export const GlobalContext = createContext(initialState);
@@ -21,24 +21,28 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
+  // async function employeeRules() {
+
+  // }
+
   function addEmployee(employee) {
     dispatch({
       type: "ADD_EMPLOYEE",
-      payload: employee
+      payload: employee,
     });
   }
 
   function editEmployee(employee) {
     dispatch({
       type: "EDIT_EMPLOYEE",
-      payload: employee
+      payload: employee,
     });
   }
 
   function removeEmployee(id) {
     dispatch({
       type: "REMOVE_EMPLOYEE",
-      payload: id
+      payload: id,
     });
   }
 
@@ -48,7 +52,7 @@ export const GlobalProvider = ({ children }) => {
         employees: state.employees,
         addEmployee,
         editEmployee,
-        removeEmployee
+        removeEmployee,
       }}
     >
       {children}
