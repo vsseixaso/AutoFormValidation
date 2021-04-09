@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Gender from "../../constants/gender";
+import { Checkbox } from "../form/Checkbox";
 import { Input } from "../form/Input";
 import { InputNumber } from "../form/InputNumber";
 import { InputNumberDecimal } from "../form/InputNumberDecimal";
+import { Select } from "../form/Select";
 
 export const FormEmployee = (props) => {
   const { employee, handleOnChange } = props;
@@ -45,24 +47,13 @@ export const FormEmployee = (props) => {
             ></Input>
           </div>
           <div className="w-full mb-5">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="gender"
-            >
-              Gender
-            </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
-              id="gender"
-              value={employee.gender}
-              onChange={(e) => handleOnChange("gender", e.target.value)}
-            >
-              {Object.keys(Gender).map((key) => (
-                <option id={key} value={key}>
-                  {Gender[key]}
-                </option>
-              ))}
-            </select>
+            <Select
+              label={"Gender"}
+              fieldId={"gender"}
+              onChange={handleOnChange}
+              entity={employee}
+              options={Gender}
+            />
           </div>
           <div className="w-full mb-5">
             <InputNumber
@@ -82,20 +73,12 @@ export const FormEmployee = (props) => {
             ></InputNumberDecimal>
           </div>
           <div className="w-full mb-5">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="has_children"
-            >
-              Has Children?
-            </label>
-            <input
+            <Checkbox
               className="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
-              id="has_children"
-              defaultChecked={employee.has_children}
-              onChange={(e) =>
-                handleOnChange("has_children", !employee.has_children)
-              }
-              type="checkbox"
+              label={"Has Children?"}
+              fieldId={"has_children"}
+              onChange={handleOnChange}
+              entity={employee}
             />
           </div>
           <div className="flex items-center justify-between">

@@ -18,7 +18,7 @@ export const Input = (props) => {
         type={props.inputType}
         placeholder={`Enter ${props.fieldId}`}
         step={props.inputType === "number" ? props.step || 0.01 : undefined}
-        validate={true}
+        // validate={true}
       ></input>
     </React.Fragment>
   );
