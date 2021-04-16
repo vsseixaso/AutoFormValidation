@@ -21,10 +21,6 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // async function employeeRules() {
-
-  // }
-
   function addEmployee(employee) {
     dispatch({
       type: "ADD_EMPLOYEE",
@@ -46,6 +42,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  async function employeeRules() {
+    dispatch({
+      type: "EMPLOYEE_RULES",
+      payload: "employees",
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -53,6 +56,7 @@ export const GlobalProvider = ({ children }) => {
         addEmployee,
         editEmployee,
         removeEmployee,
+        employeeRules,
       }}
     >
       {children}

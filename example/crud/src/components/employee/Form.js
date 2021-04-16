@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import Gender from "../../constants/gender";
+import { GlobalContext } from "../../context/GlobalState";
 import { Checkbox } from "../form/Checkbox";
 import { Input } from "../form/Input";
 import { InputNumber } from "../form/InputNumber";
 import { InputNumberDecimal } from "../form/InputNumberDecimal";
 import { Select } from "../form/Select";
 
+// import validateField from "../../utils/validateField";
+
 export const FormEmployee = (props) => {
-  const { employee, handleOnChange } = props;
+  const { employee, handleOnChange, onSubmit } = props;
 
-  // const { employeeRules } = useContext(EmployeeContext);
+  const { employeeRules } = useContext(GlobalContext);
 
-  const onSubmit = (e) => {
-    console.log(employee);
-    props.onSubmit(e);
+  const handleOnChangeWithValidate = async (field, value) => {
+    const rules = await employeeRules();
+    console.log(rules);
+
+    // validateField(rules[field], value)
+
+    handleOnChange(field, value);
   };
-
-  // const handleOnChange = (field, value, validationFn = undefined) => {
-  //   if (validationFn) validationFn(employeeRules[field], value);
-
-  //   ...
-  // }
 
   return (
     <React.Fragment>
@@ -32,7 +33,7 @@ export const FormEmployee = (props) => {
             <Input
               label={"Name"}
               fieldId={"name"}
-              onChange={handleOnChange}
+              onChange={handleOnChangeWithValidate}
               entity={employee}
               inputType={"text"}
             ></Input>
