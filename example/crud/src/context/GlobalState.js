@@ -42,13 +42,6 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  async function employeeRules() {
-    dispatch({
-      type: "EMPLOYEE_RULES",
-      payload: "employees",
-    });
-  }
-
   return (
     <GlobalContext.Provider
       value={{
@@ -56,7 +49,6 @@ export const GlobalProvider = ({ children }) => {
         addEmployee,
         editEmployee,
         removeEmployee,
-        employeeRules,
       }}
     >
       {children}

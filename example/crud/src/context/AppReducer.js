@@ -1,5 +1,3 @@
-import { getRules } from "../services/rules";
-
 export default function appReducer(state, action) {
   switch (action.type) {
     case "ADD_EMPLOYEE":
@@ -29,12 +27,6 @@ export default function appReducer(state, action) {
         employees: state.employees.filter(
           (employee) => employee.id !== action.payload
         ),
-      };
-
-    case "EMPLOYEE_RULES":
-      return {
-        ...state,
-        rules: getRules(action.payload),
       };
 
     default:

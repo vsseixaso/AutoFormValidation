@@ -1,26 +1,29 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Gender from "../../constants/gender";
-import { GlobalContext } from "../../context/GlobalState";
+import { getRules } from "../../services/rules";
+import validateField from "../../utils/validateField";
 import { Checkbox } from "../form/Checkbox";
 import { Input } from "../form/Input";
 import { InputNumber } from "../form/InputNumber";
 import { InputNumberDecimal } from "../form/InputNumberDecimal";
 import { Select } from "../form/Select";
 
-// import validateField from "../../utils/validateField";
-
 export const FormEmployee = (props) => {
   const { employee, handleOnChange, onSubmit } = props;
 
-  const { employeeRules } = useContext(GlobalContext);
+  const [rules, setRules] = useState({});
+
+  useEffect(() => {
+    async function invokeRules() {
+      setRules(await getRules("employees"));
+    }
+    invokeRules();
+  }, []);
 
   const handleOnChangeWithValidate = async (field, value) => {
-    const rules = await employeeRules();
-    console.log(rules);
-
-    // validateField(rules[field], value)
+    validateField(rules[field], value);
 
     handleOnChange(field, value);
   };

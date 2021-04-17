@@ -6,7 +6,6 @@ export const getRules = (tableName) => {
   return axios
     .get(RULES_URL + tableName)
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
