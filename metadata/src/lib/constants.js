@@ -4,6 +4,7 @@ const dataType = {
   NUMBER: ["int", "decimal"],
   STRING: ["char", "varchar"],
   BOOL: ["tinyint"],
+  DATE: ["date"],
 };
 
 const metadataColumns = {

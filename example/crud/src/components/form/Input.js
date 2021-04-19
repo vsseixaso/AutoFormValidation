@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Input = (props) => {
   return (
@@ -11,15 +11,19 @@ export const Input = (props) => {
         {props.label}
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
         id={props.fieldId}
         value={props.entity[props.fieldId]}
         onChange={(e) => props.onChange(props.fieldId, e.target.value)}
         type={props.inputType}
         placeholder={`Enter ${props.fieldId}`}
-        step={props.inputType === "number" ? props.step || 0.01 : undefined}
+        step={props.inputType === 'number' ? props.step || 0.01 : undefined}
         // validate={true}
       ></input>
+      <div
+        id={`errors-${props.fieldId}`}
+        className="text-xs text-red-500"
+      ></div>
     </React.Fragment>
   );
 };
