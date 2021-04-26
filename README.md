@@ -1,10 +1,10 @@
 # AutoFormValidation
 
 ## Introduction 
-> Validation of Form Fields in Web Applications from Entity Metadata in the Database
+Validation of Form Fields in Web Applications from Entity Metadata in the Database
 
 ## Getting Started
-> how to get a copy of the project and have it running.
+How to get a copy of the project and have it running.
 
 ### Installation
 1.  Clone the repo
