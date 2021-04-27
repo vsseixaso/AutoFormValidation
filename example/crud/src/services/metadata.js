@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const RULES_URL = "http://localhost:8000/rules/";
+const METADATA_URL = "http://localhost:8000/metadata/";
 
-export const getRules = (tableName) => {
+export const getMetadata = (tableName) => {
   return axios
-    .get(RULES_URL + tableName)
+    .get(METADATA_URL + tableName)
     .then((response) => {
       return response.data;
     })

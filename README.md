@@ -26,6 +26,6 @@ How to get a copy of the project and have it running.
 ### Usage
 This project contains a suggested usage for the API in the [example](https://github.com/vsseixaso/AutoFormValidation/tree/main/example) folder.
 
- - In [rules](https://github.com/vsseixaso/AutoFormValidation/blob/main/example/crud/src/services/rules.js) the application calls the API
+ - In [metadata](https://github.com/vsseixaso/AutoFormValidation/blob/main/example/crud/src/services/metadata.js) the application calls the API
  - In [validateField](https://github.com/vsseixaso/AutoFormValidation/blob/main/example/crud/src/utils/validateField.js) the form fields are validated. *In the future this will be in a js library for use and increment*
  - In the [form](https://github.com/vsseixaso/AutoFormValidation/blob/main/example/crud/src/components/employee/Form.js) the fields make use of the validateField

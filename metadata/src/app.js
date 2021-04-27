@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const index = require("./routes/index");
-const rulesRoute = require("./routes/rules");
+const metadataRoute = require("./routes/metadata");
 
 const app = express();
 
@@ -11,6 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", index);
-app.use("/rules", rulesRoute);
+app.use("/metadata", metadataRoute);
 
 module.exports = app;

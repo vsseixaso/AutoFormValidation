@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Gender from '../../constants/gender';
-import { getRules } from '../../services/rules';
+import { getMetadata } from '../../services/metadata';
 import validateField from '../../utils/validateField';
 import { Checkbox } from '../form/Checkbox';
 import { Input } from '../form/Input';
@@ -13,13 +13,13 @@ import { Select } from '../form/Select';
 export const FormEmployee = (props) => {
   const { employee, handleOnChange, onSubmit } = props;
 
-  const [rules, setRules] = useState({});
+  const [metadata, setMetadata] = useState({});
 
   useEffect(() => {
-    async function fetchRules() {
-      setRules(await getRules('employees'));
+    async function fetchMetadata() {
+      setMetadata(await getMetadata('employees'));
     }
-    fetchRules();
+    fetchMetadata();
   }, []);
 
   const toggleCSSError = (fieldId, hasError) => {
@@ -58,7 +58,7 @@ export const FormEmployee = (props) => {
   };
 
   const handleOnChangeWithValidate = async (field, value) => {
-    const validationErrors = validateField(rules[field], value);
+    const validationErrors = validateField(metadata[field], value);
 
     validationErrors?.length > 0
       ? showValidationError(field, validationErrors)
