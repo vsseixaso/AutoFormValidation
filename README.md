@@ -1,7 +1,7 @@
 # AutoFormValidation
 
 ## Introduction 
-Validation of Form Fields in Web Applications from Entity Metadata in the Database
+Validation of Form Fields in Web Applications from Entity Metadata in the MySQL Database
 
 ## Getting Started
 How to get a copy of the project and have it running.
@@ -17,7 +17,7 @@ How to get a copy of the project and have it running.
     yarn
     ```
 3. Add database settings
-    > Add your connection config to the database in [config/db.js](https://github.com/vsseixaso/AutoFormValidation/blob/main/metadata/src/config/db.js)
+    > Add your connection config to the MySQL database in [config/db.js](https://github.com/vsseixaso/AutoFormValidation/blob/main/metadata/src/config/db.js)
 4. Run
     ```sh
     yarn start
