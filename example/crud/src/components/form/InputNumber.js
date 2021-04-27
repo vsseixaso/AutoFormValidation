@@ -11,5 +11,4 @@ InputNumber.propTypes = {
   label: PropTypes.string.isRequired,
   entity: PropTypes.object.isRequired,
   onChange: PropTypes.func,
-  rules: PropTypes.array,
 };

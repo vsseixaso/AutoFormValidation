@@ -34,5 +34,4 @@ Input.propTypes = {
   entity: PropTypes.object.isRequired,
   inputType: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  rules: PropTypes.array,
 };

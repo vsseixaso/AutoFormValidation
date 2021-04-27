@@ -1,14 +1,14 @@
 const { Router } = require("express");
 
-const controller = require("../controllers/rules");
+const controller = require("../controllers/metadata");
 
 const router = Router();
 
 router.get("/:tableName", async (req, res, next) => {
   const tableName = req.params.tableName;
-  const rules = await controller.getRules(tableName);
+  const metadata = await controller.getMetadata(tableName);
 
-  res.status(200).send(rules);
+  res.status(200).send(metadata);
 });
 
 module.exports = router;

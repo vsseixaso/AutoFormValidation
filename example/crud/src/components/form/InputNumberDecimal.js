@@ -12,7 +12,6 @@ InputNumberDecimal.propTypes = {
   entity: PropTypes.object.isRequired,
   step: PropTypes.number,
   onChange: PropTypes.func,
-  rules: PropTypes.array,
 };
 
 InputNumberDecimal.defaultProps = {

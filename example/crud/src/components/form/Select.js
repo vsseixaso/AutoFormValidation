@@ -32,5 +32,4 @@ Select.propTypes = {
   entity: PropTypes.object.isRequired,
   options: PropTypes.object.isRequired,
   onChange: PropTypes.func,
-  rules: PropTypes.array,
 };

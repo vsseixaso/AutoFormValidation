@@ -3,28 +3,28 @@ const dbConfig = require("../config/db");
 const { metadataColumns } = require("../lib/constants");
 const utils = require("../lib/utils");
 
-const getColumnRules = (column) => {
-  let columnRules = {};
+const getColumnMetadata = (column) => {
+  let columnMetadata = {};
 
   Object.keys(metadataColumns).forEach((key) => {
     const metadata = metadataColumns[key];
     const convert = metadata.convert;
     const columnName = column[metadata.name];
 
-    columnRules[key] = convert(columnName);
+    columnMetadata[key] = convert(columnName);
   });
 
-  return columnRules;
+  return columnMetadata;
 };
 
 const formatTableMetadata = (tableMetadata) => {
-  let rules = {};
+  let metadata = {};
 
   tableMetadata.forEach((column) => {
-    rules[column["COLUMN_NAME"]] = getColumnRules(column);
+    metadata[column["COLUMN_NAME"]] = getColumnMetadata(column);
   });
 
-  return rules;
+  return metadata;
 };
 
 const getTableMetadata = async (schemaName, tableName) => {
@@ -42,12 +42,12 @@ const getTableMetadata = async (schemaName, tableName) => {
   }
 };
 
-const getRules = async (tableName) => {
+const getMetadata = async (tableName) => {
   const schemaName = dbConfig.database;
   const tableMetadata = await getTableMetadata(schemaName, tableName);
-  const rules = formatTableMetadata(tableMetadata);
+  const metadata = formatTableMetadata(tableMetadata);
 
-  return rules;
+  return metadata;
 };
 
-module.exports = { getRules };
+module.exports = { getMetadata };
