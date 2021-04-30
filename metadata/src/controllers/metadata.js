@@ -1,9 +1,9 @@
-const { makeDb } = require("../db");
-const dbConfig = require("../config/db");
-const { metadataColumns } = require("../lib/constants");
-const utils = require("../lib/utils");
+const { makeDb } = require('../db');
+const dbConfig = require('../config/db');
+const { metadataColumns } = require('../lib/constants');
+const utils = require('../lib/utils');
 
-const getColumnMetadata = (column) => {
+const formatColumnMetadata = (column) => {
   let columnMetadata = {};
 
   Object.keys(metadataColumns).forEach((key) => {
@@ -17,11 +17,11 @@ const getColumnMetadata = (column) => {
   return columnMetadata;
 };
 
-const formatTableMetadata = (tableMetadata) => {
+const formatMetadata = (tableMetadata) => {
   let metadata = {};
 
   tableMetadata.forEach((column) => {
-    metadata[column["COLUMN_NAME"]] = getColumnMetadata(column);
+    metadata[column['COLUMN_NAME']] = formatColumnMetadata(column);
   });
 
   return metadata;
@@ -45,7 +45,7 @@ const getTableMetadata = async (schemaName, tableName) => {
 const getMetadata = async (tableName) => {
   const schemaName = dbConfig.database;
   const tableMetadata = await getTableMetadata(schemaName, tableName);
-  const metadata = formatTableMetadata(tableMetadata);
+  const metadata = formatMetadata(tableMetadata);
 
   return metadata;
 };
