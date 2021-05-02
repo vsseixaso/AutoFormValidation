@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import Gender from '../../constants/gender';
 import { getMetadata } from '../../services/metadata';
 import validateField from '../../utils/ValidateField';
-import { Checkbox } from '../form/Checkbox';
-import { Input } from '../form/Input';
-import { InputNumber } from '../form/InputNumber';
-import { InputNumberDecimal } from '../form/InputNumberDecimal';
-import { Select } from '../form/Select';
+import { Checkbox } from '../formFields/Checkbox';
+import { Input } from '../formFields/Input';
+import { InputNumber } from '../formFields/InputNumber';
+import { InputNumberDecimal } from '../formFields/InputNumberDecimal';
+import { Select } from '../formFields/Select';
 
 export const FormEmployee = (props) => {
   const { employee, handleOnChange, onSubmit } = props;
