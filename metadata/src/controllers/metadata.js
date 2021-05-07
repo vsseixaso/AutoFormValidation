@@ -1,5 +1,5 @@
 const { makeDb } = require('../db');
-const dbConfig = require('../config/db');
+const dbConfig = require('../config/dbCredentials');
 const { metadataColumns } = require('../lib/constants');
 const utils = require('../lib/utils');
 

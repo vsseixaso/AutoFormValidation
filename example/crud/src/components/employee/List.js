@@ -1,17 +1,17 @@
-import moment from "moment";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import moment from 'moment';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
-import Gender from "../../constants/gender";
-import { GlobalContext } from "../../context/GlobalState";
+import Gender from '../../constants/gender';
+import { GlobalContext } from '../../context/GlobalState';
 
 export const EmployeeList = () => {
   const { employees, removeEmployee } = useContext(GlobalContext);
 
   const formatHeightWeight = (height, weight) => {
-    const formatedHeight = height ? `${height} cm` : "";
-    const formatedWeight = weight ? `${weight} kg` : "";
-    const pipe = height && weight ? " | " : "";
+    const formatedHeight = height ? `${height} cm` : '';
+    const formatedWeight = weight ? `${weight} kg` : '';
+    const pipe = height && weight ? ' | ' : '';
 
     return formatedHeight + pipe + formatedWeight;
   };
@@ -22,7 +22,7 @@ export const EmployeeList = () => {
         <React.Fragment>
           {employees.map((employee) => (
             <div
-              className="flex items-center bg-gray-100 mb-10 shadow"
+              className="flex items-center bg-gray-100 mb-5 shadow"
               key={employee.id}
             >
               <div className="flex-auto text-left px-4 py-2 m-2">
@@ -31,10 +31,10 @@ export const EmployeeList = () => {
                 </span>
                 <p className="text-xs text-gray-600">
                   {employee.birthday
-                    ? moment(employee.birthday, "YYYY-MM-DD").format(
-                        "DD/MM/YYYY"
+                    ? moment(employee.birthday, 'YYYY-MM-DD').format(
+                        'DD/MM/YYYY'
                       )
-                    : ""}
+                    : ''}
                 </p>
                 <p className="text-xs text-gray-600">
                   {Gender[employee.gender]}
@@ -43,7 +43,7 @@ export const EmployeeList = () => {
                   {formatHeightWeight(employee.height, employee.weight)}
                 </p>
                 <p className="text-xs text-gray-600">
-                  {employee.has_children ? "Has children" : ""}
+                  {employee.has_children ? 'Has children' : ''}
                 </p>
               </div>
               <div className="flex-auto text-right px-4 py-2 m-2">
