@@ -58,7 +58,6 @@ export const FormEmployee = (props) => {
   };
 
   const handleOnChangeWithValidate = async (field, value) => {
-    debugger;
     const validationErrors = validateField(metadata[field], value);
 
     validationErrors?.length > 0
