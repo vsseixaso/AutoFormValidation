@@ -6,7 +6,7 @@ The solution development report can be found [here](https://drive.google.com/fil
 ## Getting Started
 How to get a copy of the project and have it running.
 
-### Dependency Requirements
+### Requirement Dependencies
 - Node.js - v12.x.x
 - MySQL - v8.x.x
 - [Package.json](metadata/package.json) \[metadata\]
